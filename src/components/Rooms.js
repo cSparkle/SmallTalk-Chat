@@ -8,11 +8,14 @@ class Rooms extends Component {
 
         this.state = {
             rooms: [],
-            newRoom: ''
+            newRoom: '',
+            editedRoom: ''
         };
         this.roomsRef = this.props.firebase.database().ref('Rooms');
         this.createRoom = this.createRoom.bind(this);
         this.handleCreateRoom = this.handleCreateRoom.bind(this);
+        this.editRoom = this.editRoom.bind(this);
+        this.handleEditRoom = this.handleEditRoom.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +25,26 @@ class Rooms extends Component {
             this.setState({
                 rooms: this.state.rooms.concat( room )
             });
+        });
+
+        this.roomsRef.on('child_changed' , snapshot => {
+            const changedRoom = snapshot.val();
+            changedRoom.key = snapshot.key;
+            for (let i = 0; i < this.state.rooms.length; i++) {
+                if (this.state.rooms[i].key === changedRoom.key) {
+                    let rooms = this.state.rooms
+                    rooms[i].roomId = this.state.editedRoom;
+                    this.setState({
+                        rooms: rooms
+                    });
+                }
+            }
+        });
+    }
+
+    handleCreateRoom(e) {
+        this.setState({
+            newRoom: e.target.value
         });
     }
 
@@ -36,16 +59,32 @@ class Rooms extends Component {
         });
     }
 
-    handleCreateRoom(e) {
+    handleEditRoom(e) {
         this.setState({
-            newRoom: e.target.value
+            editedRoom: e.target.value
         });
     }
+
+    editRoom(e, roomKey) {
+        e.preventDefault();
+        if (!this.state.editedRoom) { return }
+        var newName = {
+            roomId: this.state.editedRoom
+        };
+        var updates = {};
+        updates[`Rooms/${roomKey}`] = newName;
+        this.props.firebase.database().ref().update(updates);
+        console.log(updates);
+        this.setState({
+            editedRoom: ''
+        });
+    }
+
     render () {
         return (
             <div>
                 <h1>Current Room: {this.props.activeRoom}</h1>
-                <RoomList rooms={this.state.rooms} activeRoom={this.props.activeRoom} handleRoomChange={this.props.handleRoomChange} />
+                <RoomList rooms={this.state.rooms} activeRoom={this.props.activeRoom} handleRoomChange={this.props.handleRoomChange} editRoom={this.editRoom} handleEditRoom={this.handleEditRoom} />                
                 <RoomCreate createRoom={this.createRoom} handleCreateRoom={this.handleCreateRoom} newRoom={this.state.newRoom} />
             </div>
         );
