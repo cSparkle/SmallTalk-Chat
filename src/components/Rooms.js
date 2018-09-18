@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import RoomList from './RoomList';
+import RoomCreate from './RoomCreate';
 
 class Rooms extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            rooms: []
+            rooms: [],
+            newRoom: ''
         };
         this.roomsRef = this.props.firebase.database().ref('Rooms');
+        this.createRoom = this.createRoom.bind(this);
+        this.handleCreateRoom = this.handleCreateRoom.bind(this);
     }
 
     componentDidMount() {
@@ -18,13 +22,29 @@ class Rooms extends Component {
             this.setState({
                 rooms: this.state.rooms.concat( room )
             });
-            console.log(this.state.rooms);
+        });
+    }
+
+    createRoom(e) {
+        e.preventDefault();
+        this.roomsRef.push({
+            roomId: this.state.newRoom
+        });
+        this.setState({
+            newRoom: ''
+        });
+    }
+
+    handleCreateRoom(e) {
+        this.setState({
+            newRoom: e.target.value
         });
     }
     render () {
         return (
             <div>
                 <RoomList rooms={this.state.rooms} />
+                <RoomCreate createRoom={this.createRoom} handleCreateRoom={this.handleCreateRoom} newRoom={this.state.newRoom} />
             </div>
         );
     }
