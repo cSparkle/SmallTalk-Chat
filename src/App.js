@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import Rooms from './components/Rooms';
 import Messages from './components/Messages';
+import Users from './components/Users';
 import './App.css';
 
 var config = {
@@ -19,9 +20,11 @@ class App extends Component {
     super(props);
     
     this.state = {
-      activeRoom: null
+      activeRoom: null,
+      user: 'Guest'
     };
     this.handleRoomChange = this.handleRoomChange.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   handleRoomChange(room) {
@@ -30,11 +33,24 @@ class App extends Component {
     });
   }
 
+  setUser(user) {
+    if(user) {
+      this.setState({
+        user: user
+      });
+    } else {
+      this.setState({
+        user: 'Guest'
+      });
+    }
+  }
+
   render() {
     return (
       <div>
         <Rooms firebase={firebase} activeRoom={this.state.activeRoom} handleRoomChange={this.handleRoomChange} />
         <Messages firebase={firebase} activeRoom={this.state.activeRoom} />
+        <Users firebase={firebase} setUser={this.setUser} user={this.state.user} />
       </div>
     );
   }

@@ -27,6 +27,7 @@ class Rooms extends Component {
 
     createRoom(e) {
         e.preventDefault();
+        if (!this.state.newRoom) { return }
         this.roomsRef.push({
             roomId: this.state.newRoom
         });
