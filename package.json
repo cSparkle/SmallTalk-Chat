@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "firebase": "^5.5.0",
+    "moment": "^2.22.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-moment": "^0.7.9",
     "react-scripts": "1.1.5"
   },
   "scripts": {
