@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import Rooms from './components/Rooms';
+import Messages from './components/Messages';
 import './App.css';
 
 var config = {
@@ -14,10 +15,26 @@ var config = {
 firebase.initializeApp(config);
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      activeRoom: null
+    };
+    this.handleRoomChange = this.handleRoomChange.bind(this);
+  }
+
+  handleRoomChange(room) {
+    this.setState({
+      activeRoom: room.roomId
+    });
+  }
+
   render() {
     return (
       <div>
-        <Rooms firebase={firebase} />
+        <Rooms firebase={firebase} activeRoom={this.state.activeRoom} handleRoomChange={this.handleRoomChange} />
+        <Messages firebase={firebase} activeRoom={this.state.activeRoom} />
       </div>
     );
   }

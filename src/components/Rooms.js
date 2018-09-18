@@ -43,7 +43,8 @@ class Rooms extends Component {
     render () {
         return (
             <div>
-                <RoomList rooms={this.state.rooms} />
+                <h1>Current Room: {this.props.activeRoom}</h1>
+                <RoomList rooms={this.state.rooms} activeRoom={this.props.activeRoom} handleRoomChange={this.props.handleRoomChange} />
                 <RoomCreate createRoom={this.createRoom} handleCreateRoom={this.handleCreateRoom} newRoom={this.state.newRoom} />
             </div>
         );
