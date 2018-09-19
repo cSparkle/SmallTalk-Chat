@@ -20,6 +20,7 @@ class Messages extends Component {
         this.handleSelectMessage = this.handleSelectMessage.bind(this);
         this.handleEditMessage = this.handleEditMessage.bind(this);
         this.editMessage = this.editMessage.bind(this);
+        this.deleteMessage = this.deleteMessage.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +29,13 @@ class Messages extends Component {
             message.key = snapshot.key;
             this.setState({
                 messages: this.state.messages.concat( message )
+            });
+        });
+        this.messagesRef.on('child_removed', snapshot => {
+            const deletedMessage = snapshot.val();
+            deletedMessage.key = snapshot.key;
+            this.setState({
+                messages: this.state.messages.filter(message => message.key !== deletedMessage.key)
             });
         });
         this.messagesRef.on('child_changed', snapshot => {
@@ -90,10 +98,18 @@ class Messages extends Component {
         });
     }
 
+    deleteMessage(messageKey) {
+        const confirmDelete = window.confirm('Are you sure you want to delete this room? This action cannot be undone.');
+        if (confirmDelete) {
+            const messageRef = this.props.firebase.database().ref(`messages/${messageKey}`);
+            messageRef.remove();
+        }
+    }
+
     render() {
         return (
             <div>
-                <MessageList messages={this.state.messages} activeRoom={this.props.activeRoom} handleSelectMessage={this.handleSelectMessage} handleEditMessage={this.handleEditMessage} selectedMessage={this.state.selectedMessage} editMessage={this.editMessage} />
+                <MessageList messages={this.state.messages} activeRoom={this.props.activeRoom} handleSelectMessage={this.handleSelectMessage} handleEditMessage={this.handleEditMessage} selectedMessage={this.state.selectedMessage} editMessage={this.editMessage} deleteMessage={this.deleteMessage} />
                 <MessageCreate newMessage={this.state.newMessage} handleCreateMessage={this.handleCreateMessage} createMessage={this.createMessage} />
             </div>
         );
