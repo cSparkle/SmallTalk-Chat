@@ -74,7 +74,6 @@ class Rooms extends Component {
         var updates = {};
         updates[`Rooms/${roomKey}`] = newName;
         this.props.firebase.database().ref().update(updates);
-        console.log(updates);
         this.setState({
             editedRoom: ''
         });
