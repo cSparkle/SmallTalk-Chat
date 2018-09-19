@@ -16,6 +16,7 @@ class Rooms extends Component {
         this.handleCreateRoom = this.handleCreateRoom.bind(this);
         this.editRoom = this.editRoom.bind(this);
         this.handleEditRoom = this.handleEditRoom.bind(this);
+        this.deleteRoom = this.deleteRoom.bind(this);
     }
 
     componentDidMount() {
@@ -26,7 +27,6 @@ class Rooms extends Component {
                 rooms: this.state.rooms.concat( room )
             });
         });
-
         this.roomsRef.on('child_changed' , snapshot => {
             const changedRoom = snapshot.val();
             changedRoom.key = snapshot.key;
@@ -39,6 +39,13 @@ class Rooms extends Component {
                     });
                 }
             }
+        });
+        this.roomsRef.on('child_removed', snapshot => {
+            const deletedRoom = snapshot.val();
+            deletedRoom.key = snapshot.key;
+            this.setState({
+                rooms: this.state.rooms.filter(room => room.key !== deletedRoom.key)
+            });
         });
     }
 
@@ -77,11 +84,19 @@ class Rooms extends Component {
         });
     }
 
+    deleteRoom(roomKey) {
+        const confirmDelete = window.confirm('Are you sure you want to delete this room? This action cannot be undone.');
+        if (confirmDelete) {
+            const roomRef = this.props.firebase.database().ref(`Rooms/${roomKey}`);
+            roomRef.remove();
+        }
+    }
+
     render () {
         return (
             <div>
                 <h1>Current Room: {this.props.activeRoom}</h1>
-                <RoomList rooms={this.state.rooms} activeRoom={this.props.activeRoom} handleRoomChange={this.props.handleRoomChange} editRoom={this.editRoom} handleEditRoom={this.handleEditRoom} />                
+                <RoomList rooms={this.state.rooms} activeRoom={this.props.activeRoom} handleRoomChange={this.props.handleRoomChange} editRoom={this.editRoom} handleEditRoom={this.handleEditRoom} deleteRoom={this.deleteRoom} />                
                 <RoomCreate createRoom={this.createRoom} handleCreateRoom={this.handleCreateRoom} newRoom={this.state.newRoom} />
             </div>
         );

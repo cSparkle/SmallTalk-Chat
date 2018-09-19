@@ -7,7 +7,7 @@ class RoomList extends Component {
                 {this.props.rooms.map( room => 
                     <ul key={room.key}>
                         <li onClick={ () => this.props.handleRoomChange(room)}>{room.roomId}</li>
-
+                        <button type='button' value='delete' onClick={ () => this.props.deleteRoom(room.key)}>X</button>
                         {this.props.activeRoom === room.roomId &&
                             <form onSubmit={ (e) => this.props.editRoom(e, room.key) }>
                                 <label htmlFor="editRoom">Edit Room Name</label>
