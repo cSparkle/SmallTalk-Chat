@@ -117,6 +117,7 @@ class Messages extends Component {
                     selectedMessage={this.state.selectedMessage}
                     editMessage={this.editMessage} 
                     deleteMessage={this.deleteMessage} 
+                    user={this.props.user}
                 />
                 <MessageCreate 
                     newMessage={this.state.newMessage} 

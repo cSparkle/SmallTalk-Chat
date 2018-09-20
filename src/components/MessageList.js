@@ -13,7 +13,9 @@ class MessageList extends Component {
                         <li>{message.username}</li>
                         <li>{message.content}</li>
                         <li><Moment format='M/D/YYY h:mm:ss a'>{message.sentAt}</Moment></li>
-                        <button type='button' value='delete' onClick={ () => this.props.deleteMessage(message.key)}>X</button>
+                        {this.props.user.displayName === message.username &&
+                            <button type='button' value='delete' onClick={ () => this.props.deleteMessage(message.key)}>X</button>
+                        }
                         <li onClick={ () => this.props.handleSelectMessage(message.key)}>Edit</li>
 
                         {/*The below code displays the edit form for only the message that is clicked*/}
