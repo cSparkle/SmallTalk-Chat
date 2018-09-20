@@ -96,8 +96,21 @@ class Rooms extends Component {
         return (
             <div>
                 <h1>Current Room: {this.props.activeRoom}</h1>
-                <RoomList rooms={this.state.rooms} activeRoom={this.props.activeRoom} handleRoomChange={this.props.handleRoomChange} editRoom={this.editRoom} handleEditRoom={this.handleEditRoom} deleteRoom={this.deleteRoom} />                
-                <RoomCreate createRoom={this.createRoom} handleCreateRoom={this.handleCreateRoom} newRoom={this.state.newRoom} />
+                <RoomList 
+                    rooms={this.state.rooms} 
+                    activeRoom={this.props.activeRoom} 
+                    handleRoomChange={this.props.handleRoomChange} 
+                    editRoom={this.editRoom} 
+                    handleEditRoom={this.handleEditRoom} 
+                    deleteRoom={this.deleteRoom} 
+                    user={this.props.user} 
+                />                
+                <RoomCreate 
+                    createRoom={this.createRoom} 
+                    handleCreateRoom={this.handleCreateRoom} 
+                    newRoom={this.state.newRoom} 
+                    user={this.props.user} 
+                />
             </div>
         );
     }

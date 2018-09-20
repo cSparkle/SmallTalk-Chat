@@ -109,8 +109,22 @@ class Messages extends Component {
     render() {
         return (
             <div>
-                <MessageList messages={this.state.messages} activeRoom={this.props.activeRoom} handleSelectMessage={this.handleSelectMessage} handleEditMessage={this.handleEditMessage} selectedMessage={this.state.selectedMessage} editMessage={this.editMessage} deleteMessage={this.deleteMessage} />
-                <MessageCreate newMessage={this.state.newMessage} handleCreateMessage={this.handleCreateMessage} createMessage={this.createMessage} />
+                <MessageList 
+                    messages={this.state.messages} 
+                    activeRoom={this.props.activeRoom} 
+                    handleSelectMessage={this.handleSelectMessage} 
+                    handleEditMessage={this.handleEditMessage} 
+                    selectedMessage={this.state.selectedMessage}
+                    editMessage={this.editMessage} 
+                    deleteMessage={this.deleteMessage} 
+                />
+                <MessageCreate 
+                    newMessage={this.state.newMessage} 
+                    handleCreateMessage={this.handleCreateMessage} 
+                    createMessage={this.createMessage} 
+                    activeRoom={this.props.activeRoom} 
+                    user={this.props.user} 
+                />
             </div>
         );
     }
