@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from 'sweetalert';
 
 class Users extends Component {
     constructor(props) {
@@ -44,12 +45,12 @@ class Users extends Component {
     createUser(e) {
         e.preventDefault();
         if (!this.state.username) {
-            alert('You must set a username');
+            swal('So close!', 'You need to set a username before you can continue', 'error');
             return;
          }
 
         if (this.state.password.length < 6) {
-            alert('Your password must be at least 6 characters long');
+            swal('Not quite!', 'Your password must be at least 6 characters long', 'error');
             return;
         }
         
@@ -58,9 +59,9 @@ class Users extends Component {
             var createErrorMessage = error.message;
         
             if (createErrorCode == 'auth/weak-password') {
-                alert('The password is too weak.');
+                swal('Weeeeeak', 'Your password is a little weak. Try something a little more complex', 'error');
             } else {
-                alert(createErrorMessage);
+                swal(createErrorMessage);
             }
         })
         this.setState({
@@ -76,9 +77,9 @@ class Users extends Component {
             var errorMessage = error.message;
 
             if (errorCode === 'auth/wrong-password') {
-                alert('Incorrect password');
+                swal('Nope', "That's not the correct password. Try again.", 'error');
             } else {
-                alert(errorMessage);
+                swal(errorMessage);
             }
         })
         this.setState({
@@ -100,9 +101,9 @@ class Users extends Component {
 
     handleSignOut() {
         this.props.firebase.auth().signOut().then( () => {
-            alert('See ya!');
+            swal('See ya!', "You're all signed out.", 'success');
         }).catch( () => {
-            alert('Error signing out');
+            swal('Whoops!', 'There was an error. Try that again.', 'error');
         })
     }
 

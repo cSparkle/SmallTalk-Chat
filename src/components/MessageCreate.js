@@ -4,7 +4,7 @@ class MessageCreate extends Component {
     render() {
         return (
             <div>
-                {this.props.user !== 'Guest' &&
+                {this.props.user !== 'Guest' && this.props.activeRoom !== null &&
                     <form onSubmit={ (e) => this.props.createMessage(e) }>
                         <label htmlFor='newMessage'>New Message</label>
                         <input type='text' id='newMessage' onChange={ (e) => this.props.handleCreateMessage(e) } value={this.props.newMessage} />

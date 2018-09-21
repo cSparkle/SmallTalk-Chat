@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RoomList from './RoomList';
 import RoomCreate from './RoomCreate';
+import swal from 'sweetalert';
 
 class Rooms extends Component {
     constructor(props) {
@@ -85,17 +86,27 @@ class Rooms extends Component {
     }
 
     deleteRoom(roomKey) {
-        const confirmDelete = window.confirm('Are you sure you want to delete this room? This action cannot be undone.');
-        if (confirmDelete) {
-            const roomRef = this.props.firebase.database().ref(`Rooms/${roomKey}`);
-            roomRef.remove();
-        }
+        swal({
+            title: 'Danger Zone!',
+            text: "Are you sure you want to delete the room? There's no going back.",
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true
+        })
+        .then( (willDelete) => {
+            if (willDelete) {
+                swal('Success!', 'That room has gone byebye.', 'success');
+                const roomRef = this.props.firebase.database().ref(`Rooms/${roomKey}`);
+                roomRef.remove();
+            } else {
+                swal('Oh snap!', 'Something went wrong. Try that one more time.', 'error');
+            }
+        })
     }
 
     render () {
         return (
             <div>
-                <h1>Current Room: {this.props.activeRoom}</h1>
                 <RoomList 
                     rooms={this.state.rooms} 
                     activeRoom={this.props.activeRoom} 

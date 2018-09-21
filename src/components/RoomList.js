@@ -6,6 +6,7 @@ class RoomList extends Component {
             <div>
                 {this.props.user !== 'Guest' &&
                     <div>
+                        <h1>Current Room: {this.props.activeRoom}</h1>
                         {this.props.rooms.map( room => 
                             <ul key={room.key}>
                                 <li onClick={ () => this.props.handleRoomChange(room)}>{room.roomId}</li>
