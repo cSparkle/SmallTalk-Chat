@@ -112,29 +112,38 @@ class Users extends Component {
             <div>
                 {/* Determine whether user is signed in and choose which button to display sign-in or sign-out*/}
                 {this.props.user === 'Guest' ? (
-                    <div>
-                        <p>Welcome, stranger!</p>
-                        <p>Create an account below:</p>
-                        <form onSubmit={ (e) => this.createUser(e)}>
-                            <label htmlFor='username'>Username</label>
-                            <input type='text' id='username' placeholder='CattyCathy' onChange={ (e) => this.handleCreateUsername(e)} />
-                            <label htmlFor='createEmail'>Email</label>
-                            <input type='email' id='createEmail' placeholder='johnDoe@domain.com' onChange={ (e) => this.handleEmailInput(e)} />
-                            <label htmlFor='createPassword'>Password</label>
-                            <input type='password' id='createPassword' placeholder='******' onChange={ (e) => this.handlePasswordInput(e)} />
-                            <input type='submit' id='submitNewUser' value='Create' />
-                        </form>
-                        <p>OR, create an account and sign in using Google</p>
-                        <button type='button' value='signIn' onClick={ () => this.handleGoogleSignIn() }>Create account with Google</button>
-                        <p>Already have an account? Sign in below:</p>
-                        <form onSubmit={ (e) => this.signInUser(e)}>
-                            <label htmlFor='signInEmail'>Email</label>
-                            <input type='email' id='signInEmail' placeholder='janeDoe@domain.com' onChange={ (e) => this.handleEmailInput(e)} />
-                            <label htmlFor='signInPassword'>Password</label>
-                            <input type='password' id='signInPassword' placeholder='******' onChange={ (e) => this.handlePasswordInput(e)} />
-                            <input type='submit' id='submitSignIn' value='Sign In' />
-                        </form>
-                        <button type='button' value='signIn' onClick={ () => this.handleGoogleSignIn() }>Sign-in using Google</button>
+                    <div className='container'>
+                        <div className='row justify-content-center m-5'>
+                            <h2 className='col-4'>Welcome, stranger!</h2>
+                        </div>
+                        <div className='row mb-5'>
+                            <div className='form-group col-6'>
+                                <p className='text-center'>Create an account below:</p>
+                                <form onSubmit={ (e) => this.createUser(e)}>
+                                    <label htmlFor='username'>Username</label>
+                                    <input className='form-control' type='text' id='username' placeholder='CattyCathy' onChange={ (e) => this.handleCreateUsername(e)} />
+                                    <label htmlFor='createEmail'>Email</label>
+                                    <input className='form-control' type='email' id='createEmail' placeholder='johnDoe@domain.com' onChange={ (e) => this.handleEmailInput(e)} />
+                                    <label htmlFor='createPassword'>Password</label>
+                                    <input className='form-control' type='password' id='createPassword' placeholder='******' onChange={ (e) => this.handlePasswordInput(e)} />
+                                    <input className='btn btn-primary btn-block' type='submit' id='submitNewUser' value='Create' />
+                                </form>
+                                <p className='text-center'>OR, create an account and sign in using Google</p>
+                                <button className='btn btn-primary btn-block' type='button' value='signIn' onClick={ () => this.handleGoogleSignIn() }>Create account with Google</button>
+                            </div>
+                        
+                            <div className='col-6'>
+                                <p className='text-center'>Already have an account? Sign in below:</p>
+                                <form onSubmit={ (e) => this.signInUser(e)}>
+                                    <label htmlFor='signInEmail'>Email</label>
+                                    <input className='form-control' type='email' id='signInEmail' placeholder='janeDoe@domain.com' onChange={ (e) => this.handleEmailInput(e)} />
+                                    <label htmlFor='signInPassword'>Password</label>
+                                    <input className='form-control' type='password' id='signInPassword' placeholder='******' onChange={ (e) => this.handlePasswordInput(e)} />
+                                    <input className='btn btn-primary btn-block' type='submit' id='submitSignIn' value='Sign In' />
+                                </form>
+                                <button className='btn btn-primary btn-block' type='button' value='signIn' onClick={ () => this.handleGoogleSignIn() }>Sign-in using Google</button>
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <div>

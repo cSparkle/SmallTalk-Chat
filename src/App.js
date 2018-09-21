@@ -48,6 +48,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <h1>Small Talk</h1>
         <Rooms firebase={firebase} activeRoom={this.state.activeRoom} handleRoomChange={this.handleRoomChange} user={this.state.user} />
         <Messages firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user} />
         <Users firebase={firebase} setUser={this.setUser} user={this.state.user} />
