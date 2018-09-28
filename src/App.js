@@ -27,6 +27,9 @@ class App extends Component {
     this.setUser = this.setUser.bind(this);
   }
 
+  // setUser is passed to the Users component to set user based on the authentication in Firebase.
+  // if no user (i.e. if the person is not signed in) user is "Guest" which has no privileges.
+
   setUser(user) {
     if (user) {
       this.setState({
@@ -38,6 +41,9 @@ class App extends Component {
       });
     }
   }
+
+  // handleRoomChange's activeRoom state was lifted to App.js so that when a user clicks on a room (in RoomList)
+  // the changed room can be sent to Messages which uses activeRoom to correlate messages in the database with the activeRoom
 
   handleRoomChange(room) {
     this.setState({

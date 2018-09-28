@@ -5,7 +5,8 @@ class MessageList extends Component {
   render() {
     return (
       <div>
-        {/* Below, messages is mapped over and each displayed accordingly based on whether they belong to the active/clicked on room */}
+        {/* Below, messages is mapped over and each displayed accordingly based on whether they belong to the activeRoom
+        none of this will show if the state of user is equal to "Guest" */}
         {this.props.user !== 'Guest'
             && (
             <div>
