@@ -139,11 +139,11 @@ class Users extends Component {
                     placeholder="******"
                     onChange={e => this.handlePasswordInput(e)}
                   />
-                  <input className="btn btn-primary btn-block" type="submit" id="submitNewUser" value="Create" />
+                  <input className="btn btn-light btn-block" type="submit" id="submitNewUser" value="Create" />
                 </form>
                 <p className="text-center">OR, create an account and sign in using Google</p>
                 <button
-                  className="btn btn-primary btn-block"
+                  className="btn btn-light btn-block"
                   type="button"
                   value="signIn"
                   onClick={() => this.handleGoogleSignIn()}
@@ -171,10 +171,10 @@ class Users extends Component {
                     placeholder="******"
                     onChange={e => this.handlePasswordInput(e)}
                   />
-                  <input className="btn btn-primary btn-block" type="submit" id="submitSignIn" value="Sign In" />
+                  <input className="btn btn-light btn-block" type="submit" id="submitSignIn" value="Sign In" />
                 </form>
                 <button
-                  className="btn btn-primary btn-block"
+                  className="btn btn-light btn-block"
                   type="button"
                   value="signIn"
                   onClick={() => this.handleGoogleSignIn()}
