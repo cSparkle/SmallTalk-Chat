@@ -118,8 +118,8 @@ class Users extends Component {
               <h2 className="col-4">Welcome, stranger!</h2>
             </div>
             <div className="row mb-5">
-              <div className="form-group col-6">
-                <p className="text-center">Create an account below:</p>
+              <div className="col-sm-8 col-md-5 shadow-lg my-3 mx-auto bg-dark text-light">
+                <p className="text-center mt-3">Create an account below:</p>
                 <form onSubmit={e => this.createUser(e)}>
                   <label htmlFor="username">Username</label>
                   <input className="form-control" type="text" id="username" placeholder="CattyCathy" onChange={e => this.handleCreateUsername(e)} />
@@ -139,11 +139,11 @@ class Users extends Component {
                     placeholder="******"
                     onChange={e => this.handlePasswordInput(e)}
                   />
-                  <input className="btn btn-light btn-block" type="submit" id="submitNewUser" value="Create" />
+                  <input className="btn btn-secondary btn-block my-4" type="submit" id="submitNewUser" value="Create" />
                 </form>
-                <p className="text-center">OR, create an account and sign in using Google</p>
+                <p className="text-center mt-5">OR, create an account and sign in using Google</p>
                 <button
-                  className="btn btn-light btn-block"
+                  className="btn btn-secondary btn-block my-4"
                   type="button"
                   value="signIn"
                   onClick={() => this.handleGoogleSignIn()}
@@ -152,8 +152,8 @@ class Users extends Component {
                 </button>
               </div>
 
-              <div className="col-6">
-                <p className="text-center">Already have an account? Sign in below:</p>
+              <div className="col-sm-8 col-md-5 shadow-lg my-3 mx-auto bg-dark text-light">
+                <p className="text-center mt-3">Already have an account? Sign in below:</p>
                 <form onSubmit={e => this.signInUser(e)}>
                   <label htmlFor="signInEmail">Email</label>
                   <input
@@ -171,10 +171,10 @@ class Users extends Component {
                     placeholder="******"
                     onChange={e => this.handlePasswordInput(e)}
                   />
-                  <input className="btn btn-light btn-block" type="submit" id="submitSignIn" value="Sign In" />
+                  <input className="btn btn-secondary btn-block my-4" type="submit" id="submitSignIn" value="Sign In" />
                 </form>
                 <button
-                  className="btn btn-light btn-block"
+                  className="btn btn-secondary btn-block my-4"
                   type="button"
                   value="signIn"
                   onClick={() => this.handleGoogleSignIn()}

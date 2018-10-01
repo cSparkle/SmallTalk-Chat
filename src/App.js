@@ -53,8 +53,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Small Talk</h1>
+      <div className="all">
+        <h1 id="logo">Small Talk</h1>
         <Rooms
           firebase={firebase}
           activeRoom={this.state.activeRoom}

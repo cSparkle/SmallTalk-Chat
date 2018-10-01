@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=K2D|Pacifico');
+
+.all {
+    font-family: K2D, monospace;
+}
+
+#logo {
+    font-family: pacifico, cursive;
+}
+
