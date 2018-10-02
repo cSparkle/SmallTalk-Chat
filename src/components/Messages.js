@@ -23,6 +23,7 @@ class Messages extends Component {
     this.deleteMessage = this.deleteMessage.bind(this);
   }
 
+  // Update state and the database whenever a message is added
   componentDidMount() {
     this.messagesRef.on('child_added', (snapshot) => {
       const message = snapshot.val();
@@ -31,6 +32,7 @@ class Messages extends Component {
         messages: prevState.messages.concat(message),
       }));
     });
+    // Update state and the database whenever a message is deleted
     this.messagesRef.on('child_removed', (snapshot) => {
       const deletedMessage = snapshot.val();
       deletedMessage.key = snapshot.key;
@@ -38,6 +40,7 @@ class Messages extends Component {
         messages: prevState.messages.filter(message => message.key !== deletedMessage.key),
       }));
     });
+    // Update state and the database whenever a message is edited
     this.messagesRef.on('child_changed', (snapshot) => {
       const changedMessage = snapshot.val();
       changedMessage.key = snapshot.key;
@@ -53,12 +56,14 @@ class Messages extends Component {
     });
   }
 
+  // Grab the value of the input where a new message is typed
   handleCreateMessage(e) {
     this.setState({
       newMessage: e.target.value,
     });
   }
 
+  // Create all the object properties for the new message that will get stored in state and in the database
   createMessage(e) {
     e.preventDefault();
     const timestamp = Date.now();
@@ -74,18 +79,21 @@ class Messages extends Component {
     });
   }
 
+  // Allow message to be clicked and change state of selected message
   handleSelectMessage(message) {
     this.setState({
       selectedMessage: message,
     });
   }
 
+  // Grab the value from the input where an edit to a message occurs
   handleEditMessage(e) {
     this.setState({
       editedMessage: e.target.value,
     });
   }
 
+  // Updates the associated database reference for the selected message with the new message content
   editMessage(e, messageKey) {
     e.preventDefault();
     const newMessageData = {
@@ -98,6 +106,7 @@ class Messages extends Component {
     });
   }
 
+  // Deletes a message from the database
   deleteMessage(messageKey) {
     const confirmDelete = window.confirm('Are you sure you want to delete this room? This action cannot be undone.');
     if (confirmDelete) {

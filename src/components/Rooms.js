@@ -20,6 +20,7 @@ class Rooms extends Component {
     this.deleteRoom = this.deleteRoom.bind(this);
   }
 
+  // Update state and the database whenever a room is created
   componentDidMount() {
     this.roomsRef.on('child_added', (snapshot) => {
       const room = snapshot.val();
@@ -28,6 +29,7 @@ class Rooms extends Component {
         rooms: prevState.rooms.concat(room),
       }));
     });
+    // Update state and the database whenever a room is edited
     this.roomsRef.on('child_changed', (snapshot) => {
       const changedRoom = snapshot.val();
       changedRoom.key = snapshot.key;
@@ -41,6 +43,7 @@ class Rooms extends Component {
         }
       }
     });
+    // Update state and the database whenever a room is deleted
     this.roomsRef.on('child_removed', (snapshot) => {
       const deletedRoom = snapshot.val();
       deletedRoom.key = snapshot.key;
@@ -50,12 +53,14 @@ class Rooms extends Component {
     });
   }
 
+  // Grab value of input where user can create a new room
   handleCreateRoom(e) {
     this.setState({
       newRoom: e.target.value,
     });
   }
 
+  // Creates new room
   createRoom(e) {
     e.preventDefault();
     if (!this.state.newRoom) { return; }
@@ -67,12 +72,14 @@ class Rooms extends Component {
     });
   }
 
+  // Grabs value of input where user can edit the selected room's name
   handleEditRoom(e) {
     this.setState({
       editedRoom: e.target.value,
     });
   }
 
+  // Edits selected room name
   editRoom(e, roomKey) {
     e.preventDefault();
     if (!this.state.editedRoom) { return; }
@@ -85,6 +92,7 @@ class Rooms extends Component {
     });
   }
 
+  // Performs checks to confirm deletion of room using sweetalert then deletes room
   deleteRoom(roomKey) {
     swal({
       title: 'Danger Zone!',

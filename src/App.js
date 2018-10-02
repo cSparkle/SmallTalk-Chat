@@ -27,7 +27,7 @@ class App extends Component {
     this.setUser = this.setUser.bind(this);
   }
 
-  // setUser is passed to the Users component to set user based on the authentication in Firebase.
+  // setUser is passed to the Users component to set a user based on the authentication performed in Firebase.
   // if no user (i.e. if the person is not signed in) user is "Guest" which has no privileges.
 
   setUser(user) {

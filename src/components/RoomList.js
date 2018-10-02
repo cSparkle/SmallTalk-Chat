@@ -4,10 +4,12 @@ class RoomList extends Component {
   render() {
     return (
       <div>
+        {/* Determines whether use is set. If user does not equal "Guest", the list of chat rooms is displayed */}
         {this.props.user !== 'Guest'
             && (
             <div>
               <h1>Current Room: {this.props.activeRoom}</h1>
+                {/* Map over each room in the array of rooms to display buttonsn to edit and delete room */}
                 {this.props.rooms.map(room => (
                   <ul key={room.key}>
                     <button type="button" onClick={() => this.props.handleRoomChange(room)}>{room.roomId}</button>

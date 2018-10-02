@@ -17,6 +17,7 @@ class Users extends Component {
     this.handlePasswordInput = this.handlePasswordInput.bind(this);
   }
 
+  // Sets the status of the user when a user elects to login or create account
   componentDidMount() {
     this.props.firebase.auth().onAuthStateChanged((user) => {
       this.props.setUser(user);
@@ -31,18 +32,22 @@ class Users extends Component {
     });
   }
 
+  // Grabs value of input where user provides email address
   handleEmailInput(e) {
     this.setState({
       email: e.target.value,
     });
   }
 
+  // Grabs value of input where user provides password
   handlePasswordInput(e) {
     this.setState({
       password: e.target.value,
     });
   }
 
+  // Performs checks to ensure satisfactory username and password and uses sweetalert for alerts.
+  // Assuming tests pass, new user is created using authorization service provided by Firebase
   createUser(e) {
     e.preventDefault();
     if (!this.state.username) {
@@ -71,6 +76,7 @@ class Users extends Component {
     });
   }
 
+  // Uses authorization provided by Firebase to sign in a user with email and password
   signInUser(e) {
     e.preventDefault();
     this.props.firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch((error) => {
@@ -89,17 +95,20 @@ class Users extends Component {
     });
   }
 
+  // Grabs value of input where user can create username
   handleCreateUsername(e) {
     this.setState({
       username: e.target.value,
     });
   }
 
+  // Uses Google authentication to sign-in or sign-up a user
   handleGoogleSignIn() {
     const providerGoogle = new this.props.firebase.auth.GoogleAuthProvider();
     this.props.firebase.auth().signInWithPopup(providerGoogle);
   }
 
+  // Signs out user and alerts using sweetalert
   handleSignOut() {
     this.props.firebase.auth().signOut().then(() => {
       swal('See ya!', "You're all signed out.", 'success');
@@ -111,7 +120,7 @@ class Users extends Component {
   render() {
     return (
       <div>
-        {/* Determine whether user is signed in and choose which button to display sign-in or sign-out */}
+        {/* Determine whether user is signed in. Displays sign-up/sign-in form if no user set */}
         {this.props.user === 'Guest' ? (
           <div className="container">
             <div className="row justify-content-center m-5">
@@ -184,6 +193,7 @@ class Users extends Component {
               </div>
             </div>
           </div>
+          // If user is signed in, only the code below is run
         ) : (
           <div>
             <p>Welcome, {this.props.user.displayName}</p>
@@ -195,6 +205,7 @@ class Users extends Component {
   }
 }
 
+// Type checking to ensure the prop setUser is sent as a function
 Users.propTypes = {
   setUser: PropTypes.func.isRequired,
 };
