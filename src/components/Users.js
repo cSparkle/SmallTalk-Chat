@@ -123,9 +123,10 @@ class Users extends Component {
         {/* Determine whether user is signed in. Displays sign-up/sign-in form if no user set */}
         {this.props.user === 'Guest' ? (
           <div className="container">
-            <div className="row justify-content-center m-5">
-              <h2 className="col-4">Welcome, stranger!</h2>
+            <div className="row m-5">
+              <h2 className="col-12 text-center">Welcome!</h2>
             </div>
+            <hr />
             <div className="row mb-5">
               <div className="col-sm-8 col-md-5 shadow-lg my-3 mx-auto bg-dark text-light">
                 <p className="text-center mt-3">Create an account below:</p>
