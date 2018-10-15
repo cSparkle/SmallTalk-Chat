@@ -55,6 +55,11 @@ class App extends Component {
     return (
       <div>
         <h1 id="logo">Small Talk</h1>
+        <Users
+          firebase={firebase}
+          setUser={this.setUser}
+          user={this.state.user}
+        />
         <Rooms
           firebase={firebase}
           activeRoom={this.state.activeRoom}
@@ -64,11 +69,6 @@ class App extends Component {
         <Messages
           firebase={firebase}
           activeRoom={this.state.activeRoom}
-          user={this.state.user}
-        />
-        <Users
-          firebase={firebase}
-          setUser={this.setUser}
           user={this.state.user}
         />
         <footer>

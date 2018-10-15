@@ -101,3 +101,41 @@ footer a:hover {
         max-width: 400px;
     }
 }
+
+/*CSS below is used for Rooms.js, RoomList.js components (first page after sign-in)*/
+
+#rooms {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+}
+
+.roomList {
+    height: 50px;
+    margin: 0;
+    width: 90%;
+    padding: 0px 10px;
+    border: none;
+    background-color: #999;
+    text-align: left;
+}
+
+.roomList:hover {
+    background-color: #FFF;
+}
+
+.deleteButton {
+    width: 10%;
+    border: none;
+    height: 50px;
+    background-color: #999;
+}
+
+.deleteButton:hover {
+    background-color: red;
+}
+
+#signOutButton, #addRoomButton {
+    width: 100px;
+}
+

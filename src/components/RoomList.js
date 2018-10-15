@@ -8,12 +8,11 @@ class RoomList extends Component {
         {this.props.user !== 'Guest'
             && (
             <div>
-              <h1>Current Room: {this.props.activeRoom}</h1>
                 {/* Map over each room in the array of rooms to display buttonsn to edit and delete room */}
                 {this.props.rooms.map(room => (
                   <ul key={room.key}>
-                    <button type="button" onClick={() => this.props.handleRoomChange(room)}>{room.roomId}</button>
-                    <button type="button" value="delete" onClick={() => this.props.deleteRoom(room.key)}>X</button>
+                    <button className="roomList" type="button" onClick={() => this.props.handleRoomChange(room)}>{room.roomId}</button>
+                    <button className="deleteButton" type="button" value="delete" onClick={() => this.props.deleteRoom(room.key)}>X</button>
                     {this.props.activeRoom === room.roomId
                         && (
                         <form onSubmit={e => this.props.editRoom(e, room.key)}>

@@ -8,14 +8,16 @@ class RoomCreate extends Component {
         {this.props.user !== 'Guest'
             && (
             <form onSubmit={e => this.props.createRoom(e)}>
-              <label htmlFor="newRoom">New Room</label>
+              <label htmlFor="newRoom" />
               <input
+                className="loginInput"
                 type="text"
                 id="newRoom"
+                placeholder="Create New Room"
                 onChange={e => this.props.handleCreateRoom(e)}
                 value={this.props.newRoom}
               />
-              <input type="submit" value="Add" />
+              <input id="addRoomButton" className="loginButton" type="submit" value="Add" />
             </form>
             )
         }

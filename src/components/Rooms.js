@@ -114,7 +114,7 @@ class Rooms extends Component {
 
   render() {
     return (
-      <div>
+      <div id="rooms">
         <RoomList
           rooms={this.state.rooms}
           activeRoom={this.props.activeRoom}
