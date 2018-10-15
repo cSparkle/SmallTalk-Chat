@@ -194,12 +194,11 @@ class Users extends Component {
           </div>
           // If user is signed in, only the code below is run
         ) : (
-          <div>
-            <p id="userName">Chatting as {this.props.user.displayName}</p>
+          <div id="userArea">
+            <p>{this.props.user.displayName}</p>
             <button
-              className="loginButton"
+              className="loginButton smallerButton"
               type="button"
-              id="signOutButton"
               value="signOut"
               onClick={() => this.handleSignOut()}
             >Sign Out

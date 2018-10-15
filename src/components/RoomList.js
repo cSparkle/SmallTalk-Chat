@@ -16,9 +16,9 @@ class RoomList extends Component {
                     {this.props.activeRoom === room.roomId
                         && (
                         <form onSubmit={e => this.props.editRoom(e, room.key)}>
-                          <label htmlFor="editRoom">Edit Room Name</label>
-                          <input type="text" id="editRoom" onChange={e => this.props.handleEditRoom(e)} />
-                          <input type="submit" value="Edit" />
+                          <label htmlFor="editRoom" />
+                          <input className="loginInput" type="text" id="editRoom" placeholder="Edit Name" onChange={e => this.props.handleEditRoom(e)} />
+                          <input className="loginButton smallerButton" type="submit" value="Edit" />
                         </form>
                         )
                     }

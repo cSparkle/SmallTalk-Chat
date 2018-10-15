@@ -117,7 +117,7 @@ class Messages extends Component {
 
   render() {
     return (
-      <div>
+      <div id="messages">
         <MessageList
           messages={this.state.messages}
           activeRoom={this.props.activeRoom}

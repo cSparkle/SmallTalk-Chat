@@ -17,7 +17,7 @@ class RoomCreate extends Component {
                 onChange={e => this.props.handleCreateRoom(e)}
                 value={this.props.newRoom}
               />
-              <input id="addRoomButton" className="loginButton" type="submit" value="Add" />
+              <input className="loginButton smallerButton" type="submit" value="Add" />
             </form>
             )
         }

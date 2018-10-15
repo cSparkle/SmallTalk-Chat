@@ -53,7 +53,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div id="app">
         <h1 id="logo">Small Talk</h1>
         <Users
           firebase={firebase}
