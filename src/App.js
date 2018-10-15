@@ -53,7 +53,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="all">
+      <div>
         <h1 id="logo">Small Talk</h1>
         <Rooms
           firebase={firebase}
@@ -71,6 +71,13 @@ class App extends Component {
           setUser={this.setUser}
           user={this.state.user}
         />
+        <footer>
+          <a href="https://twitter.com/cSpaarkle" target="_blank"><ion-icon name="logo-twitter" /></a>
+          <a href="https://github.com/cSparkle" target="_blank"><ion-icon name="logo-github" /></a>
+          &copy; Cortney Thomas 2018
+          <a href="https://codepen.io/dashboard/" target="_blank"><ion-icon name="logo-codepen" /></a>
+          <a href="https://www.linkedin.com/in/cortney-thomas-3575a369/" target="_blank"><ion-icon name="logo-linkedin" /></a>
+        </footer>
       </div>
     );
   }
