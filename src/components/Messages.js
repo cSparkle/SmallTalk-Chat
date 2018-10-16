@@ -118,23 +118,27 @@ class Messages extends Component {
   render() {
     return (
       <div id="messages">
-        <MessageList
-          messages={this.state.messages}
-          activeRoom={this.props.activeRoom}
-          handleSelectMessage={this.handleSelectMessage}
-          handleEditMessage={this.handleEditMessage}
-          selectedMessage={this.state.selectedMessage}
-          editMessage={this.editMessage}
-          deleteMessage={this.deleteMessage}
-          user={this.props.user}
-        />
-        <MessageCreate
-          newMessage={this.state.newMessage}
-          handleCreateMessage={this.handleCreateMessage}
-          createMessage={this.createMessage}
-          activeRoom={this.props.activeRoom}
-          user={this.props.user}
-        />
+        {this.props.user !== 'Guest' && (
+        <div>
+          <MessageList
+            messages={this.state.messages}
+            activeRoom={this.props.activeRoom}
+            handleSelectMessage={this.handleSelectMessage}
+            handleEditMessage={this.handleEditMessage}
+            selectedMessage={this.state.selectedMessage}
+            editMessage={this.editMessage}
+            deleteMessage={this.deleteMessage}
+            user={this.props.user}
+          />
+          <MessageCreate
+            newMessage={this.state.newMessage}
+            handleCreateMessage={this.handleCreateMessage}
+            createMessage={this.createMessage}
+            activeRoom={this.props.activeRoom}
+            user={this.props.user}
+          />
+        </div>
+        )}
       </div>
     );
   }

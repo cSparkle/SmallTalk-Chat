@@ -9,12 +9,12 @@ class MessageList extends Component {
         none of this will show if the state of user is equal to "Guest" */}
         {this.props.user !== 'Guest'
             && (
-            <div>
+            <div id="messageList">
                 {this.props.messages.map(message => this.props.activeRoom === message.roomId && (
-                <ul key={message.key}>
-                  <li>{message.username}</li>
+                <ul className="message" key={message.key}>
+                  <li id="messageSender">{message.username}</li>
                   <li>{message.content}</li>
-                  <li><Moment format="M/D/YYY h:mm:ss a">{message.sentAt}</Moment></li>
+                  <li><Moment format="h:mm:ss a">{message.sentAt}</Moment></li>
                   {/* Below, if a use who created a message is the same user signed in, then the option to delete a message will appear */}
                   {this.props.user.displayName === message.username
                     && <button type="button" value="delete" onClick={() => this.props.deleteMessage(message.key)}>X</button>

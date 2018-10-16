@@ -115,21 +115,25 @@ class Rooms extends Component {
   render() {
     return (
       <div id="rooms">
-        <RoomList
-          rooms={this.state.rooms}
-          activeRoom={this.props.activeRoom}
-          handleRoomChange={this.props.handleRoomChange}
-          editRoom={this.editRoom}
-          handleEditRoom={this.handleEditRoom}
-          deleteRoom={this.deleteRoom}
-          user={this.props.user}
-        />
-        <RoomCreate
-          createRoom={this.createRoom}
-          handleCreateRoom={this.handleCreateRoom}
-          newRoom={this.state.newRoom}
-          user={this.props.user}
-        />
+        {this.props.user !== 'Guest' && (
+        <div>
+          <RoomList
+            rooms={this.state.rooms}
+            activeRoom={this.props.activeRoom}
+            handleRoomChange={this.props.handleRoomChange}
+            editRoom={this.editRoom}
+            handleEditRoom={this.handleEditRoom}
+            deleteRoom={this.deleteRoom}
+            user={this.props.user}
+          />
+          <RoomCreate
+            createRoom={this.createRoom}
+            handleCreateRoom={this.handleCreateRoom}
+            newRoom={this.state.newRoom}
+            user={this.props.user}
+          />
+        </div>
+        )}
       </div>
     );
   }

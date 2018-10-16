@@ -53,24 +53,30 @@ class App extends Component {
 
   render() {
     return (
-      <div id="app">
+      <div>
         <h1 id="logo">Small Talk</h1>
         <Users
           firebase={firebase}
           setUser={this.setUser}
           user={this.state.user}
         />
-        <Rooms
-          firebase={firebase}
-          activeRoom={this.state.activeRoom}
-          handleRoomChange={this.handleRoomChange}
-          user={this.state.user}
-        />
-        <Messages
-          firebase={firebase}
-          activeRoom={this.state.activeRoom}
-          user={this.state.user}
-        />
+        <div>
+          {this.props.user !== 'Guest' && (
+          <div id="mainContainer">
+            <Rooms
+              firebase={firebase}
+              activeRoom={this.state.activeRoom}
+              handleRoomChange={this.handleRoomChange}
+              user={this.state.user}
+            />
+            <Messages
+              firebase={firebase}
+              activeRoom={this.state.activeRoom}
+              user={this.state.user}
+            />
+          </div>
+          )}
+        </div>
         <footer>
           <a href="https://twitter.com/cSpaarkle" target="_blank"><ion-icon name="logo-twitter" /></a>
           <a href="https://github.com/cSparkle" target="_blank"><ion-icon name="logo-github" /></a>
