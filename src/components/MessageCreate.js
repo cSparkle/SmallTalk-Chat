@@ -9,12 +9,13 @@ const MessageCreate = props => (
       <form id="createMessage" onSubmit={e => props.createMessage(e)}>
         <label htmlFor="newMessage" />
         <input
+          className="allInputs"
           type="text"
           id="newMessage"
           onChange={e => props.handleCreateMessage(e)}
           value={props.newMessage}
         />
-        <input type="submit" value="Add" />
+        <input className="allButtons" type="submit" value="Add" />
       </form>
       )
     }

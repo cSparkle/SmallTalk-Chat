@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from 'sweetalert';
 import MessageList from './MessageList';
 import MessageCreate from './MessageCreate';
 
@@ -108,11 +109,22 @@ class Messages extends Component {
 
   // Deletes a message from the database
   deleteMessage(messageKey) {
-    const confirmDelete = window.confirm('Are you sure you want to delete this room? This action cannot be undone.');
-    if (confirmDelete) {
-      const messageRef = this.props.firebase.database().ref(`messages/${messageKey}`);
-      messageRef.remove();
-    }
+    swal({
+      title: 'Danger Zone!',
+      text: "Are you sure you want to delete your message? There's no going back.",
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal('Success!', 'Adios, message!', 'success');
+          const messageRef = this.props.firebase.database().ref(`messages/${messageKey}`);
+          messageRef.remove();
+        } else {
+          swal('Alrighty', 'It stays put', 'error');
+        }
+      });
   }
 
   render() {

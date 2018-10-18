@@ -107,7 +107,7 @@ class Rooms extends Component {
           const roomRef = this.props.firebase.database().ref(`Rooms/${roomKey}`);
           roomRef.remove();
         } else {
-          swal('Oh snap!', 'Something went wrong. Try that one more time.', 'error');
+          swal('Okeydoke', 'The room stays', 'error');
         }
       });
   }

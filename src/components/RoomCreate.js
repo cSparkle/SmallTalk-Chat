@@ -10,14 +10,14 @@ class RoomCreate extends Component {
             <form onSubmit={e => this.props.createRoom(e)}>
               <label htmlFor="newRoom" />
               <input
-                className="loginInput"
+                className="allInputs"
                 type="text"
                 id="newRoom"
                 placeholder="Create New Room"
                 onChange={e => this.props.handleCreateRoom(e)}
                 value={this.props.newRoom}
               />
-              <input className="loginButton smallerButton" type="submit" value="Add" />
+              <input className="allButtons" type="submit" value="Add" />
             </form>
             )
         }

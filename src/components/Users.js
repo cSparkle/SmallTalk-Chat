@@ -129,11 +129,11 @@ class Users extends Component {
                 <h3 className="signInTitle">Create an account below:</h3>
                 <form onSubmit={e => this.createUser(e)}>
                   <label htmlFor="username" />
-                  <input className="loginInput" type="text" id="username" placeholder="CattyCathy" onChange={e => this.handleCreateUsername(e)} />
+                  <input className="allInputs" type="text" id="username" placeholder="CattyCathy" onChange={e => this.handleCreateUsername(e)} />
                   <label htmlFor="createEmail" />
                   <input
                     type="email"
-                    className="loginInput"
+                    className="allInputs"
                     id="createEmail"
                     placeholder="johnDoe@domain.com"
                     onChange={e => this.handleEmailInput(e)}
@@ -141,17 +141,17 @@ class Users extends Component {
                   <label htmlFor="createPassword" />
                   <input
                     type="password"
-                    className="loginInput"
+                    className="allInputs"
                     id="createPassword"
                     placeholder="******"
                     onChange={e => this.handlePasswordInput(e)}
                   />
-                  <input className="loginButton" type="submit" id="submitNewUser" value="Create" />
+                  <input className="loginButton allButtons" type="submit" id="submitNewUser" value="Create" />
                 </form>
                 <p>OR, create an account and sign in using Google</p>
                 <button
                   id="googleButton"
-                  className="loginButton"
+                  className="loginButton allButtons"
                   type="button"
                   value="signIn"
                   onClick={() => this.handleGoogleSignIn()}
@@ -166,7 +166,7 @@ class Users extends Component {
                   <label htmlFor="signInEmail" />
                   <input
                     type="email"
-                    className="loginInput"
+                    className="allInputs"
                     id="signInEmail"
                     placeholder="janeDoe@domain.com"
                     onChange={e => this.handleEmailInput(e)}
@@ -174,15 +174,15 @@ class Users extends Component {
                   <label htmlFor="signInPassword" />
                   <input
                     type="password"
-                    className="loginInput"
+                    className="allInputs"
                     id="signInPassword"
                     placeholder="******"
                     onChange={e => this.handlePasswordInput(e)}
                   />
-                  <input className="loginButton" type="submit" id="submitSignIn" value="Sign In" />
+                  <input className="loginButton allButtons" type="submit" id="submitSignIn" value="Sign In" />
                 </form>
                 <button
-                  className="loginButton"
+                  className="loginButton allButtons"
                   type="button"
                   value="signIn"
                   onClick={() => this.handleGoogleSignIn()}
@@ -197,11 +197,11 @@ class Users extends Component {
           <div id="userArea">
             <p>{this.props.user.displayName}</p>
             <button
-              className="loginButton smallerButton"
+              className="allButtons"
               type="button"
               value="signOut"
               onClick={() => this.handleSignOut()}
-            >Sign Out
+            >Logout
             </button>
           </div>
         )}
