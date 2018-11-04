@@ -80,9 +80,9 @@ class App extends Component {
         <footer>
           <a href="https://twitter.com/cSpaarkle" target="_blank"><ion-icon name="logo-twitter" /></a>
           <a href="https://github.com/cSparkle" target="_blank"><ion-icon name="logo-github" /></a>
-          &copy; Cortney Thomas 2018
           <a href="https://codepen.io/dashboard/" target="_blank"><ion-icon name="logo-codepen" /></a>
           <a href="https://www.linkedin.com/in/cortney-thomas-3575a369/" target="_blank"><ion-icon name="logo-linkedin" /></a>
+          <p>&copy; C.Thomas 2018</p>
         </footer>
       </div>
     );
