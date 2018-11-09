@@ -1,5 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-ReadMe.md updated on November 9th, 2018.
+This file was last updated on November 9th, 2018.
 
 ## Table of Contents
 
@@ -14,11 +14,11 @@ ReadMe.md updated on November 9th, 2018.
 
 ## Application Details
 
-###Name:
+### Name:
 Small Talk
-###Version:
+### Version:
 1.0.0
-###Pricing: 
+### Pricing: 
 Not for sale.
 
 
